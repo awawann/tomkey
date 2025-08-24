@@ -8,7 +8,7 @@
         winalts: winalts {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_WIN &kp LEFT_ALT &kp S>;
+            bindings = <&kp LEFT_WIN &kp LEFT_SHIFT &kp S>;
             label = "WINALTS";
         };
 
