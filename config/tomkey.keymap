@@ -18,6 +18,46 @@
             bindings = <&kp HASH &kp HASH &kp HASH &kp HASH>;
             label = "SECTION4";
         };
+
+        text1: text1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp LS(X) &kp LS(M) &kp N2 &kp N7 &kp N5 &kp N4 &kp N7 &kp TAB>;
+            label = "TEXT1";
+        };
+
+        text2: text2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp LS(A) &kp W &kp A &kp W &kp A &kp N &kp N>;
+            label = "TEXT2";
+        };
+
+        text3: text3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp K &kp E &kp T &kp A &kp M &kp E &kp AT &kp ENTER>;
+            label = "TEXT3";
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        ID {
+            bindings = <&text1>;
+            key-positions = <5 26>;
+        };
+
+        Pass1 {
+            bindings = <&text2>;
+            key-positions = <6 26>;
+        };
+
+        Pass3 {
+            bindings = <&text3>;
+            key-positions = <26 7>;
+        };
     };
 
     keymap {
