@@ -23,20 +23,25 @@
 
 &trackball_listener {
     status = "okay";
-    /* input-processors = <&zip_temp_layer 1 400>; */
-    /* ← 追加：レイヤー1のときだけ“ポインタ移動”を有効化 */
+
+    /* レイヤ1でだけポインタ移動 */
     mouse {
         layers = <1>;
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
-            <&zip_xy_scaler 1 16>
+            <&zip_xy_scaler 1 16>,
+            <&zip_xy_to_pointer_mapper>;
     };
+
+    /* レイヤ2でだけスクロール */
     scroll {
         layers = <2>;
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 16>, <&zip_xy_to_scroll_mapper>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
+            <&zip_xy_scaler 1 16>,
+            <&zip_xy_to_scroll_mapper>;
     };
 };
-
 
 &kscan0 {
         col-gpios
