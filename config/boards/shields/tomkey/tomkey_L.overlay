@@ -21,33 +21,13 @@
     };
 };
 
-/* === 切り替えフラグ: 0 = 手動レイヤー運用, 1 = 旧：自動一時レイヤー === */
-#define TB_AUTO_TEMP_LAYER 0
-
 &trackball_listener {
     status = "okay";
-
-#if TB_AUTO_TEMP_LAYER
-    /* 旧挙動：トラックボール入力で一時的に layer 1 （元に戻す用） */
     input-processors = <&zip_temp_layer 1 400>;
-#else
-    /* 新挙動：レイヤーボタンで layer 1 に入っている間だけマウス移動 */
-    mouse {
-        layers = <1>;
-        input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
-            <&zip_xy_scaler 1 16>,
-            <&zip_xy_to_mouse_mapper>;
-    };
-#endif
 
-    /* 従来どおり：スクロールは layer 2 限定 */
     scroll {
         layers = <2>;
-        input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
-            <&zip_xy_scaler 1 16>,
-            <&zip_xy_to_scroll_mapper>;
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 16>, <&zip_xy_to_scroll_mapper>;
     };
 };
 
